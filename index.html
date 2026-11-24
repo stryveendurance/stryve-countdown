@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>STRYVE · Go live am 1. Dezember</title>
-<meta name="description" content="Dein Plan für deine Ziele. Wir bauen den Coach, der dich kennt. STRYVE geht am 1. Dezember 2026 live.">
+<title>STRYVE · Testkohorte 1. Dezember, Go live 11. Januar</title>
+<meta name="description" content="Dein Plan für deine Ziele. Wir bauen den Coach, der dich kennt. Closed Test Cohort ab 1. Dezember 2026, Go live public am 11. Januar 2027.">
 <meta name="theme-color" content="#F2ECE0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,9 +31,28 @@ main{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:
 .golive .notiz{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:20px;color:var(--grau)}
 footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(127,16,24,.45);padding-top:24px}
 .swiss{height:11px;width:auto;display:block}
-.live .count{display:none}
+.timer+.timer{margin-top:48px}
+.timer.small .unit{padding:0 28px 2px}
+.timer.small .unit:first-child{padding-left:0}
+.timer.small .num{font-size:44px;margin-top:10px}
+.timer.small .ring{border:0;padding:0;margin:0;transform:none}
+.timer.small .ring .num{transform:none;margin-top:10px}
+.timer.small .golive{margin-top:20px}
+.timer.done .count{display:none}
+.timer.done .golive{margin-top:0}
+.liste{margin-top:56px;max-width:520px}
+.liste form{display:flex;gap:0;border-bottom:1px solid var(--tinte)}
+.liste input[type=email]{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:17px;color:var(--tinte);padding:12px 0;outline:none}
+.liste input[type=email]::placeholder{color:var(--grau)}
+.liste button{border:0;background:transparent;font-family:'Archivo';font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--bordeaux);padding:12px 0 12px 20px;cursor:pointer;white-space:nowrap}
+.liste button:disabled{opacity:.5;cursor:default}
+.liste .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.liste .info{margin-top:12px;font-size:12px;line-height:1.5;color:var(--grau)}
+.liste .info a{color:var(--grau)}
+.liste .msg{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:20px;color:var(--tinte);min-height:1.4em;margin-top:14px}
+.liste .msg.err{color:var(--bordeaux)}
 main>*{opacity:0;animation:in .8s ease-out forwards}
-main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}main>*:nth-child(4){animation-delay:.3s}main>*:nth-child(5){animation-delay:.4s}
+main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}main>*:nth-child(4){animation-delay:.3s}main>*:nth-child(5){animation-delay:.4s}main>*:nth-child(6){animation-delay:.5s}
 @keyframes in{to{opacity:1}}
 @media (max-width:900px){
  body{padding:24px}
@@ -45,6 +64,10 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
  .unit .etikett{font-size:9px;letter-spacing:.18em}
  .num{font-size:40px}
  .ring{padding:7px 26px;margin-left:-22px}
+ .timer.small .unit{padding:0 12px}
+ .timer.small .num{font-size:28px}
+ .liste{margin-top:40px}
+ .liste button{padding-left:12px;letter-spacing:.14em}
  header .etikett{display:none}
  footer{flex-direction:column;align-items:flex-start;gap:16px}
 }
@@ -61,13 +84,33 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
  <p class="regel">Dein Plan für deine Ziele.</p>
  <h1 class="gespuer">Wir bauen den Coach, der&nbsp;dich&nbsp;kennt.</h1>
  <div class="strich" aria-hidden="true"></div>
- <div class="count" role="timer" aria-live="off" aria-label="Countdown bis zum Go live">
-  <div class="unit"><span class="etikett">Tage</span><br><span class="ring"><span class="num" id="d">00</span></span></div>
-  <div class="unit"><span class="etikett">Stunden</span><span class="num" id="h">00</span></div>
-  <div class="unit"><span class="etikett">Minuten</span><span class="num" id="m">00</span></div>
-  <div class="unit"><span class="etikett">Sekunden</span><span class="num" id="s">00</span></div>
+ <section class="timer big" id="kohorte">
+ <div class="count" role="timer" aria-live="off" aria-label="Countdown Closed Test Cohort · 1. Dezember 2026">
+  <div class="unit"><span class="etikett">Tage</span><br><span class="ring"><span class="num" data-u="d">00</span></span></div>
+  <div class="unit"><span class="etikett">Stunden</span><span class="num" data-u="h">00</span></div>
+  <div class="unit"><span class="etikett">Minuten</span><span class="num" data-u="m">00</span></div>
+  <div class="unit"><span class="etikett">Sekunden</span><span class="num" data-u="s">00</span></div>
  </div>
- <div class="golive"><span class="etikett" id="label">Go live · 1. Dezember 2026</span><span class="notiz" id="notiz">Die letzten Einheiten vor dem Start.</span></div>
+ <div class="golive"><span class="etikett" data-label>Closed Test Cohort · 1. Dezember 2026</span><span class="notiz" data-notiz>Die letzten Einheiten vor dem Start.</span></div>
+ </section>
+ <section class="timer small" id="public">
+ <div class="count" role="timer" aria-live="off" aria-label="Countdown Go live public · 11. Januar 2027">
+  <div class="unit"><span class="etikett">Tage</span><br><span class="ring"><span class="num" data-u="d">00</span></span></div>
+  <div class="unit"><span class="etikett">Stunden</span><span class="num" data-u="h">00</span></div>
+  <div class="unit"><span class="etikett">Minuten</span><span class="num" data-u="m">00</span></div>
+  <div class="unit"><span class="etikett">Sekunden</span><span class="num" data-u="s">00</span></div>
+ </div>
+ <div class="golive"><span class="etikett" data-label>Go live public · 11. Januar 2027</span><span class="notiz" data-notiz>Dann für alle.</span></div>
+ </section>
+ <div class="liste">
+  <form id="warteliste" novalidate>
+   <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+   <input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="Deine E-Mail" aria-label="E-Mail">
+   <button type="submit">Auf Warteliste eintragen</button>
+  </form>
+  <p class="msg" id="msg" role="status" aria-live="polite"></p>
+  <p class="info">Wir schreiben dir nur zum Go live. <a href="/privacy">Datenschutz</a></p>
+ </div>
 </main>
 <footer>
  <svg class="swiss" role="img" aria-label="Swiss Made" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9710 686"><title>Swiss Made</title><g fill="#1C1412"><path d="M335 698Q279 698 227.0 686.5Q175 675 135.0 649.5Q95 624 72.0 584.5Q49 545 49 490Q49 484 49.5 478.5Q50 473 50 469H162Q162 472 161.5 478.0Q161 484 161 488Q161 525 183.0 551.0Q205 577 244.5 590.0Q284 603 335 603Q363 603 389.0 599.5Q415 596 436.5 588.5Q458 581 474.0 569.5Q490 558 499.0 542.0Q508 526 508 505Q508 473 489.5 452.0Q471 431 439.5 417.0Q408 403 368.5 392.0Q329 381 287.0 370.0Q245 359 205.5 344.0Q166 329 134.5 307.5Q103 286 84.5 253.5Q66 221 66 174Q66 129 85.0 94.0Q104 59 140.0 35.5Q176 12 226.0 0.0Q276 -12 339 -12Q393 -12 441.0 -0.5Q489 11 525.0 35.0Q561 59 581.5 96.0Q602 133 602 184V196H491V183Q491 151 472.0 129.0Q453 107 419.0 95.0Q385 83 340 83Q287 83 251.0 93.5Q215 104 196.5 122.5Q178 141 178 167Q178 196 197.0 214.5Q216 233 247.5 246.0Q279 259 318.5 269.5Q358 280 399.5 291.5Q441 303 480.5 318.0Q520 333 551.5 355.0Q583 377 602.0 409.5Q621 442 621 489Q621 563 584.0 609.5Q547 656 482.5 677.0Q418 698 335 698ZM1150.0 686 961.0 0H1080.0L1197.0 452Q1200.0 463 1204.0 482.0Q1208.0 501 1211.5 521.5Q1215.0 542 1218.0 559H1224.0Q1227.0 546 1229.0 531.0Q1231.0 516 1234.0 501.0Q1237.0 486 1239.5 473.0Q1242.0 460 1243.0 452L1351.0 0H1495.0L1604.0 452Q1607.0 463 1611.0 482.0Q1615.0 501 1618.5 521.5Q1622.0 542 1625.0 559H1631.0Q1633.0 547 1636.0 532.0Q1639.0 517 1642.0 502.5Q1645.0 488 1648.5 475.0Q1652.0 462 1654.0 452L1771.0 0H1877.0L1688.0 686H1557.0L1442.0 228Q1439.0 213 1435.0 193.5Q1431.0 174 1427.5 153.5Q1424.0 133 1422.0 118H1417.0Q1415.0 134 1412.0 155.0Q1409.0 176 1405.0 195.5Q1401.0 215 1398.0 228L1285.0 686ZM2249.0 686V0H2361.0V686ZM3057.0 698Q3001.0 698 2949.0 686.5Q2897.0 675 2857.0 649.5Q2817.0 624 2794.0 584.5Q2771.0 545 2771.0 490Q2771.0 484 2771.5 478.5Q2772.0 473 2772.0 469H2884.0Q2884.0 472 2883.5 478.0Q2883.0 484 2883.0 488Q2883.0 525 2905.0 551.0Q2927.0 577 2966.5 590.0Q3006.0 603 3057.0 603Q3085.0 603 3111.0 599.5Q3137.0 596 3158.5 588.5Q3180.0 581 3196.0 569.5Q3212.0 558 3221.0 542.0Q3230.0 526 3230.0 505Q3230.0 473 3211.5 452.0Q3193.0 431 3161.5 417.0Q3130.0 403 3090.5 392.0Q3051.0 381 3009.0 370.0Q2967.0 359 2927.5 344.0Q2888.0 329 2856.5 307.5Q2825.0 286 2806.5 253.5Q2788.0 221 2788.0 174Q2788.0 129 2807.0 94.0Q2826.0 59 2862.0 35.5Q2898.0 12 2948.0 0.0Q2998.0 -12 3061.0 -12Q3115.0 -12 3163.0 -0.5Q3211.0 11 3247.0 35.0Q3283.0 59 3303.5 96.0Q3324.0 133 3324.0 184V196H3213.0V183Q3213.0 151 3194.0 129.0Q3175.0 107 3141.0 95.0Q3107.0 83 3062.0 83Q3009.0 83 2973.0 93.5Q2937.0 104 2918.5 122.5Q2900.0 141 2900.0 167Q2900.0 196 2919.0 214.5Q2938.0 233 2969.5 246.0Q3001.0 259 3040.5 269.5Q3080.0 280 3121.5 291.5Q3163.0 303 3202.5 318.0Q3242.0 333 3273.5 355.0Q3305.0 377 3324.0 409.5Q3343.0 442 3343.0 489Q3343.0 563 3306.0 609.5Q3269.0 656 3204.5 677.0Q3140.0 698 3057.0 698ZM4007.0 698Q3951.0 698 3899.0 686.5Q3847.0 675 3807.0 649.5Q3767.0 624 3744.0 584.5Q3721.0 545 3721.0 490Q3721.0 484 3721.5 478.5Q3722.0 473 3722.0 469H3834.0Q3834.0 472 3833.5 478.0Q3833.0 484 3833.0 488Q3833.0 525 3855.0 551.0Q3877.0 577 3916.5 590.0Q3956.0 603 4007.0 603Q4035.0 603 4061.0 599.5Q4087.0 596 4108.5 588.5Q4130.0 581 4146.0 569.5Q4162.0 558 4171.0 542.0Q4180.0 526 4180.0 505Q4180.0 473 4161.5 452.0Q4143.0 431 4111.5 417.0Q4080.0 403 4040.5 392.0Q4001.0 381 3959.0 370.0Q3917.0 359 3877.5 344.0Q3838.0 329 3806.5 307.5Q3775.0 286 3756.5 253.5Q3738.0 221 3738.0 174Q3738.0 129 3757.0 94.0Q3776.0 59 3812.0 35.5Q3848.0 12 3898.0 0.0Q3948.0 -12 4011.0 -12Q4065.0 -12 4113.0 -0.5Q4161.0 11 4197.0 35.0Q4233.0 59 4253.5 96.0Q4274.0 133 4274.0 184V196H4163.0V183Q4163.0 151 4144.0 129.0Q4125.0 107 4091.0 95.0Q4057.0 83 4012.0 83Q3959.0 83 3923.0 93.5Q3887.0 104 3868.5 122.5Q3850.0 141 3850.0 167Q3850.0 196 3869.0 214.5Q3888.0 233 3919.5 246.0Q3951.0 259 3990.5 269.5Q4030.0 280 4071.5 291.5Q4113.0 303 4152.5 318.0Q4192.0 333 4223.5 355.0Q4255.0 377 4274.0 409.5Q4293.0 442 4293.0 489Q4293.0 563 4256.0 609.5Q4219.0 656 4154.5 677.0Q4090.0 698 4007.0 698Z"/><path d="M6005.0 686V0H6180.0L6313.0 416Q6319.0 434 6325.0 457.0Q6331.0 480 6336.5 501.0Q6342.0 522 6345.0 538H6353.0Q6355.0 523 6360.0 502.0Q6365.0 481 6370.5 458.0Q6376.0 435 6382.0 415L6516.0 0H6688.0V686H6577.0V310Q6577.0 272 6578.0 231.0Q6579.0 190 6580.0 158.0Q6581.0 126 6581.0 117H6573.0Q6571.0 128 6563.5 154.5Q6556.0 181 6548.0 211.0Q6540.0 241 6533.0 263L6394.0 686H6295.0L6156.0 264Q6150.0 245 6143.0 219.0Q6136.0 193 6129.0 166.0Q6122.0 139 6117.0 117H6109.0Q6110.0 141 6110.5 176.0Q6111.0 211 6112.0 246.5Q6113.0 282 6113.0 310V686ZM7056.0 686 7325.0 0H7468.0L7738.0 686H7618.0L7557.0 527H7232.0L7171.0 686ZM7268.0 432H7520.0L7443.0 231Q7440.0 222 7434.0 206.0Q7428.0 190 7421.5 171.0Q7415.0 152 7408.5 132.5Q7402.0 113 7397.0 97H7391.0Q7385.0 116 7376.0 142.0Q7367.0 168 7358.5 192.0Q7350.0 216 7344.0 231ZM8106.0 686V0H8371.0Q8477.0 0 8552.0 36.5Q8627.0 73 8667.5 148.5Q8708.0 224 8708.0 343Q8708.0 461 8667.5 537.0Q8627.0 613 8552.0 649.5Q8477.0 686 8371.0 686ZM8218.0 590H8370.0Q8423.0 590 8464.5 576.0Q8506.0 562 8534.5 533.0Q8563.0 504 8577.5 459.5Q8592.0 415 8592.0 354V333Q8592.0 271 8577.5 226.5Q8563.0 182 8534.5 153.0Q8506.0 124 8464.5 110.0Q8423.0 96 8370.0 96H8218.0ZM9117.0 686V0H9649.0V96H9229.0V287H9605.0V383H9229.0V590H9655.0V686Z"/></g><rect x="4790.0" y="0.0" width="686.0" height="686.0" fill="#FF0000"/><path fill="#FFFFFF" d="M5068.69 128.62h128.62v150.06h150.06v128.62h-150.06v150.06h-128.62v-150.06h-150.06v-128.62h150.06z"/></svg>
@@ -75,25 +118,52 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
 </footer>
 <script>
 (function(){
- var target=Date.UTC(2026,10,30,23,0,0); // 1.12.2026 00:00 Europe/Zurich
- var el={d:document.getElementById('d'),h:document.getElementById('h'),m:document.getElementById('m'),s:document.getElementById('s')};
+ // Zielzeiten in Europe/Zurich (UTC+1 im Winter)
+ var timers=[
+  {el:document.getElementById('kohorte'),at:Date.UTC(2026,10,30,23,0,0),live:'Closed Test Cohort · läuft seit 1. Dezember 2026',note:'Die ersten Athlet:innen trainieren.'},
+  {el:document.getElementById('public'),at:Date.UTC(2027,0,10,23,0,0),live:'Live seit 11. Januar 2027',note:'Wir sind da.'}
+ ];
  function p(n){return n<10?'0'+n:''+n}
  function tick(){
-  var diff=target-Date.now();
-  if(diff<=0){
-   document.body.classList.add('live');
-   document.getElementById('label').textContent='Live seit 1. Dezember 2026';
-   document.getElementById('notiz').textContent='Wir sind da.';
-   return;
-  }
-  var t=Math.floor(diff/1000);
-  el.d.textContent=p(Math.floor(t/86400));
-  el.h.textContent=p(Math.floor(t%86400/3600));
-  el.m.textContent=p(Math.floor(t%3600/60));
-  el.s.textContent=p(t%60);
+  var now=Date.now(),bigSet=false;
+  timers.forEach(function(t){
+   var diff=t.at-now,el=t.el;
+   if(diff<=0){
+    el.classList.add('done');el.classList.remove('big','small');
+    el.querySelector('[data-label]').textContent=t.live;
+    el.querySelector('[data-notiz]').textContent=t.note;
+    return;
+   }
+   el.classList.toggle('big',!bigSet);el.classList.toggle('small',bigSet);bigSet=true;
+   var s=Math.floor(diff/1000),v={d:Math.floor(s/86400),h:Math.floor(s%86400/3600),m:Math.floor(s%3600/60),s:s%60};
+   el.querySelectorAll('[data-u]').forEach(function(n){n.textContent=p(v[n.getAttribute('data-u')])});
+  });
   setTimeout(tick,1000-(Date.now()%1000));
  }
  tick();
+
+ // Warteliste -> CRM (Apps Script Web-App "Warteliste-CRM")
+ var ENDPOINT='https://script.google.com/macros/s/AKfycbzWKRio4RsOs3pEDNNvzR613YFRAGTwaevn5bnMX8ZOvM1B0aEdKNO089J6iZw7pk9ZVg/exec';
+ var f=document.getElementById('warteliste'),msg=document.getElementById('msg'),btn=f.querySelector('button');
+ function say(t,err){msg.textContent=t;msg.classList.toggle('err',!!err)}
+ f.addEventListener('submit',function(e){
+  e.preventDefault();
+  var email=f.email.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)){say('Bitte prüfe deine E-Mail.',true);f.email.focus();return}
+  btn.disabled=true;say('');
+  var body=new URLSearchParams({email:email,website:f.website.value,lang:(navigator.language||'').slice(0,2)});
+  fetch(ENDPOINT,{method:'POST',body:body})
+   .then(function(r){return r.json()})
+   .then(function(d){
+    if(d&&d.ok){f.reset();say('Danke. Du bist auf der Liste, wir melden uns zum Go live.')}
+    else{say('Bitte prüfe deine E-Mail.',true)}
+   })
+   .catch(function(){
+    // Fallback: Antwort nicht lesbar (z. B. Blocker), Eintrag trotzdem senden
+    fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:body}).then(function(){f.reset();say('Danke. Du bist auf der Liste, wir melden uns zum Go live.')},function(){say('Das hat nicht geklappt. Versuch es bitte nochmals.',true)});
+   })
+   .then(function(){btn.disabled=false});
+ });
 })();
 </script>
 </body>
