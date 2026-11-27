@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>STRYVE · Testkohorte 1. Dezember, Go live 11. Januar</title>
-<meta name="description" content="Dein Plan für deine Ziele. Wir bauen den Coach, der dich kennt. Closed Test Cohort ab 1. Dezember 2026, Go live public am 11. Januar 2027.">
+<title>STRYVE · Testphase ab 1. Dezember, Start für alle am 11. Januar</title>
+<meta name="description" content="Dein Plan für deine Ziele. Wir bauen den Coach, der dich kennt. Für alle, die regelmässig trainieren, mit oder ohne Rennen. Geschlossene Testphase ab 1. Dezember 2026, Start für alle am 11. Januar 2027.">
 <meta name="theme-color" content="#F2ECE0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,22 +85,22 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
  <h1 class="gespuer">Wir bauen den Coach, der&nbsp;dich&nbsp;kennt.</h1>
  <div class="strich" aria-hidden="true"></div>
  <section class="timer big" id="kohorte">
- <div class="count" role="timer" aria-live="off" aria-label="Countdown Closed Test Cohort · 1. Dezember 2026">
+ <div class="count" role="timer" aria-live="off" aria-label="Countdown geschlossene Testphase · 1. Dezember 2026">
   <div class="unit"><span class="etikett">Tage</span><br><span class="ring"><span class="num" data-u="d">00</span></span></div>
   <div class="unit"><span class="etikett">Stunden</span><span class="num" data-u="h">00</span></div>
   <div class="unit"><span class="etikett">Minuten</span><span class="num" data-u="m">00</span></div>
   <div class="unit"><span class="etikett">Sekunden</span><span class="num" data-u="s">00</span></div>
  </div>
- <div class="golive"><span class="etikett" data-label>Closed Test Cohort · 1. Dezember 2026</span><span class="notiz" data-notiz>Die letzten Einheiten vor dem Start.</span></div>
+ <div class="golive"><span class="etikett" data-label>Geschlossene Testphase · 1. Dezember 2026</span><span class="notiz" data-notiz>Die letzten Einheiten vor dem Start.</span></div>
  </section>
  <section class="timer small" id="public">
- <div class="count" role="timer" aria-live="off" aria-label="Countdown Go live public · 11. Januar 2027">
+ <div class="count" role="timer" aria-live="off" aria-label="Countdown Start für alle · 11. Januar 2027">
   <div class="unit"><span class="etikett">Tage</span><br><span class="ring"><span class="num" data-u="d">00</span></span></div>
   <div class="unit"><span class="etikett">Stunden</span><span class="num" data-u="h">00</span></div>
   <div class="unit"><span class="etikett">Minuten</span><span class="num" data-u="m">00</span></div>
   <div class="unit"><span class="etikett">Sekunden</span><span class="num" data-u="s">00</span></div>
  </div>
- <div class="golive"><span class="etikett" data-label>Go live public · 11. Januar 2027</span><span class="notiz" data-notiz>Dann für alle.</span></div>
+ <div class="golive"><span class="etikett" data-label>Start für alle · 11. Januar 2027</span><span class="notiz" data-notiz>Dann für alle.</span></div>
  </section>
  <div class="liste">
   <form id="warteliste" novalidate>
@@ -109,7 +109,7 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
    <button type="submit">Auf Warteliste eintragen</button>
   </form>
   <p class="msg" id="msg" role="status" aria-live="polite"></p>
-  <p class="info">Wir schreiben dir nur zum Go live. <a href="/privacy">Datenschutz</a></p>
+  <p class="info">Wir schreiben dir nur zum Start. <a href="/privacy">Datenschutz</a></p>
  </div>
 </main>
 <footer>
@@ -120,8 +120,8 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
 (function(){
  // Zielzeiten in Europe/Zurich (UTC+1 im Winter)
  var timers=[
-  {el:document.getElementById('kohorte'),at:Date.UTC(2026,10,30,23,0,0),live:'Closed Test Cohort · läuft seit 1. Dezember 2026',note:'Die ersten Athlet:innen trainieren.'},
-  {el:document.getElementById('public'),at:Date.UTC(2027,0,10,23,0,0),live:'Live seit 11. Januar 2027',note:'Wir sind da.'}
+  {el:document.getElementById('kohorte'),at:Date.UTC(2026,10,30,23,0,0),live:'Geschlossene Testphase · läuft seit 1. Dezember 2026',note:'Die ersten Athlet:innen trainieren.'},
+  {el:document.getElementById('public'),at:Date.UTC(2027,0,10,23,0,0),live:'Für alle offen seit 11. Januar 2027',note:'Wir sind da.'}
  ];
  function p(n){return n<10?'0'+n:''+n}
  function tick(){
@@ -155,12 +155,12 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
   fetch(ENDPOINT,{method:'POST',body:body})
    .then(function(r){return r.json()})
    .then(function(d){
-    if(d&&d.ok){f.reset();say('Danke. Du bist auf der Liste, wir melden uns zum Go live.')}
+    if(d&&d.ok){f.reset();say('Danke. Du bist auf der Liste, wir melden uns zum Start.')}
     else{say('Bitte prüfe deine E-Mail.',true)}
    })
    .catch(function(){
     // Fallback: Antwort nicht lesbar (z. B. Blocker), Eintrag trotzdem senden
-    fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:body}).then(function(){f.reset();say('Danke. Du bist auf der Liste, wir melden uns zum Go live.')},function(){say('Das hat nicht geklappt. Versuch es bitte nochmals.',true)});
+    fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:body}).then(function(){f.reset();say('Danke. Du bist auf der Liste, wir melden uns zum Start.')},function(){say('Das hat nicht geklappt. Versuch es bitte nochmals.',true)});
    })
    .then(function(){btn.disabled=false});
  });
