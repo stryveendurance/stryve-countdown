@@ -34,10 +34,6 @@ footer{display:flex;justify-content:space-between;align-items:center;border-top:
 header a.login{font-family:'Archivo';font-size:11px;font-weight:450;text-transform:uppercase;letter-spacing:.3em;color:var(--tinte);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:6px}
 header a.login:hover{color:var(--bordeaux)}
 .lead{font-size:19px;line-height:30px;max-width:560px;margin-top:28px}
-.chat{margin-top:40px;max-width:560px;border-left:1px solid rgba(127,16,24,.45);padding-left:28px;display:flex;flex-direction:column;gap:14px}
-.chat .msg{max-width:40ch;padding:12px 16px;font-size:15px;line-height:23px;background:#fff;border:1px solid rgba(127,16,24,.28)}
-.chat .me{align-self:flex-end;background:transparent}
-.chat .who{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--grau);margin-bottom:4px}
 .kohorte{margin-top:20px;font-size:11px;font-weight:450;text-transform:uppercase;letter-spacing:.3em;color:var(--grau)}
 .ziel{display:none;margin-top:20px}.ziel.on{display:block}
 .ziel form{border-bottom:1px solid var(--tinte)}
@@ -84,8 +80,7 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
  .liste button{padding-left:12px;letter-spacing:.14em}
  header a.login{letter-spacing:.18em}
  .lead{font-size:17px;line-height:27px}
- .chat{padding-left:16px}
- footer nav{flex-wrap:wrap;gap:16px}
+  footer nav{flex-wrap:wrap;gap:16px}
  footer{flex-direction:column;align-items:flex-start;gap:16px}
 }
 @media (prefers-reduced-motion:reduce){main>*{animation:none;opacity:1}}
@@ -101,10 +96,6 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
  <p class="regel">Dein Plan für deine Ziele.</p>
  <h1 class="gespuer">Wir bauen den Coach, der&nbsp;dich&nbsp;kennt.</h1>
  <p class="lead">Dein Trainingsplan per WhatsApp, direkt auf deiner Uhr. Für alle, die regelmässig trainieren, mit oder ohne Rennen. CHF 29.90 im Monat zzgl. MWST.</p>
- <div class="chat" aria-label="Beispiel aus dem Chat">
-  <p class="msg me"><span class="who">Du</span>Bin Mittwoch bis Freitag in London, Hotel ohne Velo.</p>
-  <p class="msg"><span class="who">Dein Coach</span>Danke fürs Bescheid geben. Mittwoch bis Freitag wird Laufen und Kraft im Hotel, die Schwelle schiebe ich auf Samstag. Die neuen Einheiten sind schon auf deiner Uhr.</p>
- </div>
  <div class="strich" aria-hidden="true"></div>
  <section class="timer big" id="public">
  <div class="count" role="timer" aria-live="off" aria-label="Countdown Start für alle · 11. Januar 2027">
