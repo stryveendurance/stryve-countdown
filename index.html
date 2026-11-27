@@ -30,7 +30,21 @@ main{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:
 .golive{margin-top:48px;display:flex;gap:28px;align-items:baseline;flex-wrap:wrap}
 .golive .notiz{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:20px;color:var(--grau)}
 footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(127,16,24,.45);padding-top:24px}
-.swiss{height:11px;width:auto;display:block}
+.swiss{height:12px;width:auto;display:block}
+header a.login{font-family:'Archivo';font-size:11px;font-weight:450;text-transform:uppercase;letter-spacing:.3em;color:var(--tinte);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:6px}
+header a.login:hover{color:var(--bordeaux)}
+.lead{font-size:19px;line-height:30px;max-width:560px;margin-top:28px}
+.chat{margin-top:40px;max-width:560px;border-left:1px solid rgba(127,16,24,.45);padding-left:28px;display:flex;flex-direction:column;gap:14px}
+.chat .msg{max-width:40ch;padding:12px 16px;font-size:15px;line-height:23px;background:#fff;border:1px solid rgba(127,16,24,.28)}
+.chat .me{align-self:flex-end;background:transparent}
+.chat .who{display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--grau);margin-bottom:4px}
+.kohorte{margin-top:20px;font-size:11px;font-weight:450;text-transform:uppercase;letter-spacing:.3em;color:var(--grau)}
+.ziel{display:none;margin-top:20px}.ziel.on{display:block}
+.ziel form{border-bottom:1px solid var(--tinte)}
+.ziel input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:17px;color:var(--tinte);padding:12px 0;outline:none}
+footer nav{display:flex;gap:28px;align-items:center}
+footer nav a{font-family:'Archivo';font-size:11px;font-weight:450;text-transform:uppercase;letter-spacing:.3em;color:var(--grau);text-decoration:none}
+footer nav a:hover{color:var(--bordeaux)}
 .timer+.timer{margin-top:48px}
 .timer.small .unit{padding:0 28px 2px}
 .timer.small .unit:first-child{padding-left:0}
@@ -68,7 +82,10 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
  .timer.small .num{font-size:28px}
  .liste{margin-top:40px}
  .liste button{padding-left:12px;letter-spacing:.14em}
- header .etikett{display:none}
+ header a.login{letter-spacing:.18em}
+ .lead{font-size:17px;line-height:27px}
+ .chat{padding-left:16px}
+ footer nav{flex-wrap:wrap;gap:16px}
  footer{flex-direction:column;align-items:flex-start;gap:16px}
 }
 @media (prefers-reduced-motion:reduce){main>*{animation:none;opacity:1}}
@@ -78,22 +95,18 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
 <header>
  <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="-746 -944 3607 1204" role="img" aria-label="STRYVE"><title>STRYVE</title><path fill="#7F1018" fill-rule="evenodd" d="M-525.7 12Q-570.7 12 -608.4 3Q-646.2 -6 -672.9 -29.5Q-699.6 -53 -710.6 -95Q-721.7 -137 -712.3 -204Q-712 -206 -711 -213.5Q-709.9 -221 -708.4 -225L-534.4 -225Q-535.1 -220 -535.9 -214.5Q-536.6 -209 -537.3 -204Q-541 -178 -537.8 -165Q-534.6 -152 -527.3 -147.5Q-519.9 -143 -509.9 -143Q-502.9 -143 -497.6 -145Q-492.3 -147 -487.8 -151Q-483.2 -155 -479.9 -161Q-476.5 -167 -474.4 -175Q-472.3 -183 -471 -192Q-468.3 -211 -476.5 -224Q-484.7 -237 -499.8 -247Q-514.9 -257 -534.5 -266.5Q-554.2 -276 -575.2 -287Q-596.1 -298 -614.9 -313.5Q-633.8 -329 -647 -352Q-660.3 -375 -665.8 -407Q-671.3 -439 -665.1 -483Q-656.7 -543 -633.9 -584.5Q-611 -626 -577.4 -651.5Q-543.9 -677 -504.7 -689Q-465.5 -701 -424.5 -701Q-383.5 -701 -348.9 -691Q-314.3 -681 -290.4 -659Q-266.5 -637 -256.2 -600Q-245.9 -563 -253.5 -509L-257.5 -480L-429.5 -480L-427.9 -492Q-425.5 -509 -425.3 -520.5Q-425.2 -532 -429.4 -538Q-433.5 -544 -445.5 -544Q-455.5 -544 -462.2 -539Q-469 -534 -472.1 -525.5Q-475.3 -517 -477 -505Q-480 -484 -472.1 -469Q-464.2 -454 -448.7 -443.5Q-433.1 -433 -413.5 -423.5Q-393.8 -414 -373.4 -403Q-352.9 -392 -334 -377Q-315.1 -362 -301.2 -340Q-287.3 -318 -281.7 -287Q-276 -256 -282.1 -213Q-292.6 -138 -325.1 -88Q-357.7 -38 -408.2 -13Q-458.7 12 -525.7 12Z M147 0L221.5 -530L89.5 -530L111.7 -688L556.7 -688L534.5 -530L404.5 -530L330 0Z M515 0L611.7 -688L860.7 -688Q937.7 -688 976.8 -660Q1015.8 -632 1026.6 -584Q1037.3 -536 1029 -477Q1021.4 -423 1003.8 -375.5Q986.1 -328 947.2 -293L982 0L793 0L778.5 -231L730.5 -231L698 0ZM750.8 -376L792.8 -376Q816.8 -376 827.9 -401.5Q839 -427 843.5 -459Q846.6 -481 845.6 -498.5Q844.5 -516 838.1 -527Q831.6 -538 815.6 -538L773.6 -538Z M1175.5 0L1204 -203.1L1035.7 -688L1211.5 -688L1319.8 -375.9L1515.9 -688L1691.7 -688L1387 -203.1L1358.5 0ZM1281.9 -604C1287.3 -642.7 1323 -674 1361.7 -674C1400.4 -674 1427.3 -642.7 1421.9 -604C1416.4 -565.3 1380.7 -534 1342 -534C1303.3 -534 1276.4 -565.3 1281.9 -604Z M1932 0L1911.7 -688L2104.7 -688L2094.4 -337Q2093.8 -319 2092.3 -294Q2090.8 -269 2089.4 -244.5Q2087.9 -220 2086.2 -201L2095.2 -201Q2099.9 -220 2104.9 -244.5Q2109.8 -269 2115.3 -294Q2120.8 -319 2125.4 -337L2213.7 -688L2401.7 -688L2188 0Z M2345 0L2441.7 -688L2836.7 -688L2814.5 -530L2602.5 -530L2588.2 -428L2764.2 -428L2741.9 -270L2565.9 -270L2550.2 -158L2767.2 -158L2745 0Z M347.7 -850.5L1385 -904.5C1682.8 -920 1903.2 -692.9 1877 -397.3C1851 -101.6 1588.5 150.6 1290.7 166.1L253.4 220C-44.5 235.5 -264.8 8.4 -238.6 -287.2C-212.6 -582.8 49.9 -835 347.7 -850.5ZM343.1 -798.6L1380.4 -852.5C1649.4 -866.5 1848.3 -661.5 1824.7 -394.5C1801.2 -127.6 1564.1 100.1 1295.3 114.1L257.9 168.1C-11 182.1 -209.9 -23 -186.4 -289.9C-162.8 -556.8 74.2 -784.6 343.1 -798.6Z"/></svg>
 
- <span class="etikett">STRYVE Coach</span>
+ <a class="login" href="/login">Schon dabei? Anmelden</a>
 </header>
 <main id="main">
  <p class="regel">Dein Plan für deine Ziele.</p>
  <h1 class="gespuer">Wir bauen den Coach, der&nbsp;dich&nbsp;kennt.</h1>
- <div class="strich" aria-hidden="true"></div>
- <section class="timer big" id="kohorte">
- <div class="count" role="timer" aria-live="off" aria-label="Countdown geschlossene Testphase · 1. Dezember 2026">
-  <div class="unit"><span class="etikett">Tage</span><br><span class="ring"><span class="num" data-u="d">00</span></span></div>
-  <div class="unit"><span class="etikett">Stunden</span><span class="num" data-u="h">00</span></div>
-  <div class="unit"><span class="etikett">Minuten</span><span class="num" data-u="m">00</span></div>
-  <div class="unit"><span class="etikett">Sekunden</span><span class="num" data-u="s">00</span></div>
+ <p class="lead">Dein Trainingsplan per WhatsApp, direkt auf deiner Uhr. Für alle, die regelmässig trainieren, mit oder ohne Rennen. CHF 29.90 im Monat zzgl. MWST.</p>
+ <div class="chat" aria-label="Beispiel aus dem Chat">
+  <p class="msg me"><span class="who">Du</span>Bin Mittwoch bis Freitag in London, Hotel ohne Velo.</p>
+  <p class="msg"><span class="who">Dein Coach</span>Danke fürs Bescheid geben. Mittwoch bis Freitag wird Laufen und Kraft im Hotel, die Schwelle schiebe ich auf Samstag. Die neuen Einheiten sind schon auf deiner Uhr.</p>
  </div>
- <div class="golive"><span class="etikett" data-label>Geschlossene Testphase · 1. Dezember 2026</span><span class="notiz" data-notiz>Die letzten Einheiten vor dem Start.</span></div>
- </section>
- <section class="timer small" id="public">
+ <div class="strich" aria-hidden="true"></div>
+ <section class="timer big" id="public">
  <div class="count" role="timer" aria-live="off" aria-label="Countdown Start für alle · 11. Januar 2027">
   <div class="unit"><span class="etikett">Tage</span><br><span class="ring"><span class="num" data-u="d">00</span></span></div>
   <div class="unit"><span class="etikett">Stunden</span><span class="num" data-u="h">00</span></div>
@@ -101,26 +114,32 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
   <div class="unit"><span class="etikett">Sekunden</span><span class="num" data-u="s">00</span></div>
  </div>
  <div class="golive"><span class="etikett" data-label>Start für alle · 11. Januar 2027</span><span class="notiz" data-notiz>Dann für alle.</span></div>
+ <p class="kohorte" id="kohorte">Geschlossene Testphase ab 1. Dezember 2026</p>
  </section>
  <div class="liste">
   <form id="warteliste" novalidate>
-   <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+   <label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"></label>
    <input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="Deine E-Mail" aria-label="E-Mail">
    <button type="submit">Auf Warteliste eintragen</button>
   </form>
   <p class="msg" id="msg" role="status" aria-live="polite"></p>
-  <p class="info">Wir schreiben dir nur zum Start. <a href="/privacy">Datenschutz</a></p>
+  <div class="ziel" id="ziel">
+   <form id="zielform" novalidate style="display:flex">
+    <input type="text" name="goal" maxlength="120" placeholder="Wofür trainierst du? Rennen oder Ziel" aria-label="Wofür trainierst du?">
+    <button type="submit">Speichern</button>
+   </form>
+  </div>
+  <p class="info">Du bekommst eine Bestätigung, danach schreiben wir dir erst zum Start. <a href="/privacy">Datenschutz</a></p>
  </div>
 </main>
 <footer>
  <svg class="swiss" role="img" aria-label="Swiss Made" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9710 686"><title>Swiss Made</title><g fill="#1C1412"><path d="M335 698Q279 698 227.0 686.5Q175 675 135.0 649.5Q95 624 72.0 584.5Q49 545 49 490Q49 484 49.5 478.5Q50 473 50 469H162Q162 472 161.5 478.0Q161 484 161 488Q161 525 183.0 551.0Q205 577 244.5 590.0Q284 603 335 603Q363 603 389.0 599.5Q415 596 436.5 588.5Q458 581 474.0 569.5Q490 558 499.0 542.0Q508 526 508 505Q508 473 489.5 452.0Q471 431 439.5 417.0Q408 403 368.5 392.0Q329 381 287.0 370.0Q245 359 205.5 344.0Q166 329 134.5 307.5Q103 286 84.5 253.5Q66 221 66 174Q66 129 85.0 94.0Q104 59 140.0 35.5Q176 12 226.0 0.0Q276 -12 339 -12Q393 -12 441.0 -0.5Q489 11 525.0 35.0Q561 59 581.5 96.0Q602 133 602 184V196H491V183Q491 151 472.0 129.0Q453 107 419.0 95.0Q385 83 340 83Q287 83 251.0 93.5Q215 104 196.5 122.5Q178 141 178 167Q178 196 197.0 214.5Q216 233 247.5 246.0Q279 259 318.5 269.5Q358 280 399.5 291.5Q441 303 480.5 318.0Q520 333 551.5 355.0Q583 377 602.0 409.5Q621 442 621 489Q621 563 584.0 609.5Q547 656 482.5 677.0Q418 698 335 698ZM1150.0 686 961.0 0H1080.0L1197.0 452Q1200.0 463 1204.0 482.0Q1208.0 501 1211.5 521.5Q1215.0 542 1218.0 559H1224.0Q1227.0 546 1229.0 531.0Q1231.0 516 1234.0 501.0Q1237.0 486 1239.5 473.0Q1242.0 460 1243.0 452L1351.0 0H1495.0L1604.0 452Q1607.0 463 1611.0 482.0Q1615.0 501 1618.5 521.5Q1622.0 542 1625.0 559H1631.0Q1633.0 547 1636.0 532.0Q1639.0 517 1642.0 502.5Q1645.0 488 1648.5 475.0Q1652.0 462 1654.0 452L1771.0 0H1877.0L1688.0 686H1557.0L1442.0 228Q1439.0 213 1435.0 193.5Q1431.0 174 1427.5 153.5Q1424.0 133 1422.0 118H1417.0Q1415.0 134 1412.0 155.0Q1409.0 176 1405.0 195.5Q1401.0 215 1398.0 228L1285.0 686ZM2249.0 686V0H2361.0V686ZM3057.0 698Q3001.0 698 2949.0 686.5Q2897.0 675 2857.0 649.5Q2817.0 624 2794.0 584.5Q2771.0 545 2771.0 490Q2771.0 484 2771.5 478.5Q2772.0 473 2772.0 469H2884.0Q2884.0 472 2883.5 478.0Q2883.0 484 2883.0 488Q2883.0 525 2905.0 551.0Q2927.0 577 2966.5 590.0Q3006.0 603 3057.0 603Q3085.0 603 3111.0 599.5Q3137.0 596 3158.5 588.5Q3180.0 581 3196.0 569.5Q3212.0 558 3221.0 542.0Q3230.0 526 3230.0 505Q3230.0 473 3211.5 452.0Q3193.0 431 3161.5 417.0Q3130.0 403 3090.5 392.0Q3051.0 381 3009.0 370.0Q2967.0 359 2927.5 344.0Q2888.0 329 2856.5 307.5Q2825.0 286 2806.5 253.5Q2788.0 221 2788.0 174Q2788.0 129 2807.0 94.0Q2826.0 59 2862.0 35.5Q2898.0 12 2948.0 0.0Q2998.0 -12 3061.0 -12Q3115.0 -12 3163.0 -0.5Q3211.0 11 3247.0 35.0Q3283.0 59 3303.5 96.0Q3324.0 133 3324.0 184V196H3213.0V183Q3213.0 151 3194.0 129.0Q3175.0 107 3141.0 95.0Q3107.0 83 3062.0 83Q3009.0 83 2973.0 93.5Q2937.0 104 2918.5 122.5Q2900.0 141 2900.0 167Q2900.0 196 2919.0 214.5Q2938.0 233 2969.5 246.0Q3001.0 259 3040.5 269.5Q3080.0 280 3121.5 291.5Q3163.0 303 3202.5 318.0Q3242.0 333 3273.5 355.0Q3305.0 377 3324.0 409.5Q3343.0 442 3343.0 489Q3343.0 563 3306.0 609.5Q3269.0 656 3204.5 677.0Q3140.0 698 3057.0 698ZM4007.0 698Q3951.0 698 3899.0 686.5Q3847.0 675 3807.0 649.5Q3767.0 624 3744.0 584.5Q3721.0 545 3721.0 490Q3721.0 484 3721.5 478.5Q3722.0 473 3722.0 469H3834.0Q3834.0 472 3833.5 478.0Q3833.0 484 3833.0 488Q3833.0 525 3855.0 551.0Q3877.0 577 3916.5 590.0Q3956.0 603 4007.0 603Q4035.0 603 4061.0 599.5Q4087.0 596 4108.5 588.5Q4130.0 581 4146.0 569.5Q4162.0 558 4171.0 542.0Q4180.0 526 4180.0 505Q4180.0 473 4161.5 452.0Q4143.0 431 4111.5 417.0Q4080.0 403 4040.5 392.0Q4001.0 381 3959.0 370.0Q3917.0 359 3877.5 344.0Q3838.0 329 3806.5 307.5Q3775.0 286 3756.5 253.5Q3738.0 221 3738.0 174Q3738.0 129 3757.0 94.0Q3776.0 59 3812.0 35.5Q3848.0 12 3898.0 0.0Q3948.0 -12 4011.0 -12Q4065.0 -12 4113.0 -0.5Q4161.0 11 4197.0 35.0Q4233.0 59 4253.5 96.0Q4274.0 133 4274.0 184V196H4163.0V183Q4163.0 151 4144.0 129.0Q4125.0 107 4091.0 95.0Q4057.0 83 4012.0 83Q3959.0 83 3923.0 93.5Q3887.0 104 3868.5 122.5Q3850.0 141 3850.0 167Q3850.0 196 3869.0 214.5Q3888.0 233 3919.5 246.0Q3951.0 259 3990.5 269.5Q4030.0 280 4071.5 291.5Q4113.0 303 4152.5 318.0Q4192.0 333 4223.5 355.0Q4255.0 377 4274.0 409.5Q4293.0 442 4293.0 489Q4293.0 563 4256.0 609.5Q4219.0 656 4154.5 677.0Q4090.0 698 4007.0 698Z"/><path d="M6005.0 686V0H6180.0L6313.0 416Q6319.0 434 6325.0 457.0Q6331.0 480 6336.5 501.0Q6342.0 522 6345.0 538H6353.0Q6355.0 523 6360.0 502.0Q6365.0 481 6370.5 458.0Q6376.0 435 6382.0 415L6516.0 0H6688.0V686H6577.0V310Q6577.0 272 6578.0 231.0Q6579.0 190 6580.0 158.0Q6581.0 126 6581.0 117H6573.0Q6571.0 128 6563.5 154.5Q6556.0 181 6548.0 211.0Q6540.0 241 6533.0 263L6394.0 686H6295.0L6156.0 264Q6150.0 245 6143.0 219.0Q6136.0 193 6129.0 166.0Q6122.0 139 6117.0 117H6109.0Q6110.0 141 6110.5 176.0Q6111.0 211 6112.0 246.5Q6113.0 282 6113.0 310V686ZM7056.0 686 7325.0 0H7468.0L7738.0 686H7618.0L7557.0 527H7232.0L7171.0 686ZM7268.0 432H7520.0L7443.0 231Q7440.0 222 7434.0 206.0Q7428.0 190 7421.5 171.0Q7415.0 152 7408.5 132.5Q7402.0 113 7397.0 97H7391.0Q7385.0 116 7376.0 142.0Q7367.0 168 7358.5 192.0Q7350.0 216 7344.0 231ZM8106.0 686V0H8371.0Q8477.0 0 8552.0 36.5Q8627.0 73 8667.5 148.5Q8708.0 224 8708.0 343Q8708.0 461 8667.5 537.0Q8627.0 613 8552.0 649.5Q8477.0 686 8371.0 686ZM8218.0 590H8370.0Q8423.0 590 8464.5 576.0Q8506.0 562 8534.5 533.0Q8563.0 504 8577.5 459.5Q8592.0 415 8592.0 354V333Q8592.0 271 8577.5 226.5Q8563.0 182 8534.5 153.0Q8506.0 124 8464.5 110.0Q8423.0 96 8370.0 96H8218.0ZM9117.0 686V0H9649.0V96H9229.0V287H9605.0V383H9229.0V590H9655.0V686Z"/></g><rect x="4790.0" y="0.0" width="686.0" height="686.0" fill="#FF0000"/><path fill="#FFFFFF" d="M5068.69 128.62h128.62v150.06h150.06v128.62h-150.06v150.06h-128.62v-150.06h-150.06v-128.62h150.06z"/></svg>
- <span class="etikett">stryve.coach</span>
+ <nav aria-label="Rechtliches"><a href="/imprint">Impressum</a><a href="/privacy">Datenschutz</a><a href="/terms">AGB</a></nav>
 </footer>
 <script>
 (function(){
  // Zielzeiten in Europe/Zurich (UTC+1 im Winter)
  var timers=[
-  {el:document.getElementById('kohorte'),at:Date.UTC(2026,10,30,23,0,0),live:'Geschlossene Testphase · läuft seit 1. Dezember 2026',note:'Die ersten Athlet:innen trainieren.'},
   {el:document.getElementById('public'),at:Date.UTC(2027,0,10,23,0,0),live:'Für alle offen seit 11. Januar 2027',note:'Wir sind da.'}
  ];
  function p(n){return n<10?'0'+n:''+n}
@@ -138,6 +157,7 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
    var s=Math.floor(diff/1000),v={d:Math.floor(s/86400),h:Math.floor(s%86400/3600),m:Math.floor(s%3600/60),s:s%60};
    el.querySelectorAll('[data-u]').forEach(function(n){n.textContent=p(v[n.getAttribute('data-u')])});
   });
+  if(Date.now()>=Date.UTC(2026,10,30,23,0,0)){document.getElementById('kohorte').textContent='Geschlossene Testphase läuft seit 1. Dezember 2026'}
   setTimeout(tick,1000-(Date.now()%1000));
  }
  tick();
@@ -146,6 +166,18 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
  var ENDPOINT='https://script.google.com/macros/s/AKfycbzWKRio4RsOs3pEDNNvzR613YFRAGTwaevn5bnMX8ZOvM1B0aEdKNO089J6iZw7pk9ZVg/exec';
  var f=document.getElementById('warteliste'),msg=document.getElementById('msg'),btn=f.querySelector('button');
  function say(t,err){msg.textContent=t;msg.classList.toggle('err',!!err)}
+ var ziel=document.getElementById('ziel'),zf=document.getElementById('zielform'),last='';
+ function done(email){
+  last=email;f.reset();
+  say('Danke. Du bist auf der Liste, die Bestätigung kommt per E-Mail. Magst du uns noch sagen, wofür du trainierst? Dann ist dein Coach am 11. Januar vorbereitet.');
+  ziel.classList.add('on');
+ }
+ zf.addEventListener('submit',function(e){
+  e.preventDefault();
+  var goal=zf.goal.value.trim();if(!goal||!last)return;
+  var b=new URLSearchParams({email:last,goal:goal,website:''});
+  fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:b}).then(function(){ziel.classList.remove('on');say('Notiert. Bis bald.')},function(){say('Das hat nicht geklappt. Versuch es bitte nochmals.',true)});
+ });
  f.addEventListener('submit',function(e){
   e.preventDefault();
   var email=f.email.value.trim();
@@ -155,12 +187,12 @@ main>*:nth-child(2){animation-delay:.1s}main>*:nth-child(3){animation-delay:.2s}
   fetch(ENDPOINT,{method:'POST',body:body})
    .then(function(r){return r.json()})
    .then(function(d){
-    if(d&&d.ok){f.reset();say('Danke. Du bist auf der Liste, wir melden uns zum Start.')}
+    if(d&&d.ok){done(email)}
     else{say('Bitte prüfe deine E-Mail.',true)}
    })
    .catch(function(){
     // Fallback: Antwort nicht lesbar (z. B. Blocker), Eintrag trotzdem senden
-    fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:body}).then(function(){f.reset();say('Danke. Du bist auf der Liste, wir melden uns zum Start.')},function(){say('Das hat nicht geklappt. Versuch es bitte nochmals.',true)});
+    fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:body}).then(function(){done(email)},function(){say('Das hat nicht geklappt. Versuch es bitte nochmals.',true)});
    })
    .then(function(){btn.disabled=false});
  });
